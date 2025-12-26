@@ -22,8 +22,8 @@ print(f"Explained variance: {pca.explained_variance_ratio_}")
 # next perform UMAP to reduce the priciple component analysis down to 3 dimensions
 reducer = umap.UMAP(
     n_components=3,
-    n_neighbors=30,
-    min_dist=0.1,
+    n_neighbors=100,
+    min_dist=0.5,
     metric='euclidean',
     random_state=42
 )
@@ -38,7 +38,7 @@ embedding_df = pd.DataFrame(
     columns=['x', 'y', 'z']
 )
 
-embedding_df.to_parquet('../artifacts/embedding.parquet', index=False)
+embedding_df.to_parquet('artifacts/embedding.parquet', index=False)
 
 
 print(f"Embedding saved: {embedding_df.shape}")

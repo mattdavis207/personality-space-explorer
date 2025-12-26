@@ -1,0 +1,1809 @@
+[
+  {
+    "cluster_id": -1,
+    "size": 10644,
+    "centroid": [
+      3.6572039127349854,
+      5.989560604095459,
+      -1.9543043375015259
+    ],
+    "top_mbti": {
+      "ENTP": 1119,
+      "ENFP": 1101,
+      "ESTJ": 826
+    },
+    "top_enneagram": {
+      "2w3": 912,
+      "6w7": 898,
+      "8w7": 849
+    },
+    "top_categories": {
+      "Pop Culture": 2672,
+      "Internet": 2274,
+      "Sports": 1215
+    },
+    "top_subcategories": {
+      "General Vloggers": 597,
+      "Actors and Actresses (USA)": 529,
+      "Criminals": 461,
+      "European, Musicians": 449,
+      "Internet Personalities (Other)": 389,
+      "Actors & Actresses (Asia)": 367,
+      "Comedians": 329,
+      "Kpop": 326,
+      "Football (Soccer)": 302,
+      "Writers (Literature, Modern)": 282
+    },
+    "percentage": 20.92063367270726,
+    "label": "Unique Personalities"
+  },
+  {
+    "cluster_id": 0,
+    "size": 1147,
+    "centroid": [
+      -10.265256881713867,
+      -1.0155283212661743,
+      14.94863510131836
+    ],
+    "top_mbti": {
+      "ISFP": 338,
+      "ISFJ": 330,
+      "INFP": 107
+    },
+    "top_enneagram": {
+      "9w1": 339,
+      "9w8": 129,
+      "6w7": 105
+    },
+    "top_categories": {
+      "Pop Culture": 278,
+      "Internet": 269,
+      "Sports": 225
+    },
+    "top_subcategories": {
+      "Kpop": 103,
+      "Football (American)": 70,
+      "General Vloggers": 70,
+      "Baseball": 66,
+      "Actors and Actresses (USA)": 65,
+      "Brazil, Musicians": 48,
+      "Actors & Actresses (Asia)": 44,
+      "European, Musicians": 39,
+      "Artists & Animators": 34,
+      "Internet Personalities (Other)": 34
+    },
+    "percentage": 2.25441251621526,
+    "label": "Peaceful Performers"
+  },
+  {
+    "cluster_id": 1,
+    "size": 692,
+    "centroid": [
+      2.5933456420898438,
+      -15.473494529724121,
+      -2.395320177078247
+    ],
+    "top_mbti": {
+      "ENFP": 692
+    },
+    "top_enneagram": {},
+    "top_categories": {
+      "Pop Culture": 236,
+      "Internet": 159,
+      "The Arts": 81
+    },
+    "top_subcategories": {
+      "European, Musicians": 49,
+      "Comedians": 44,
+      "Writers (Literature, Modern)": 41,
+      "Actors and Actresses (USA)": 36,
+      "Actors & Actresses (Asia)": 36,
+      "Internet Personalities (Other)": 28,
+      "General Vloggers": 28,
+      "Voice Acting": 27,
+      "TikTok Stars": 26,
+      "Actors & Actresses (Europe)": 26
+    },
+    "percentage": 1.3601163567750305,
+    "label": "Creative Campaigners"
+  },
+  {
+    "cluster_id": 2,
+    "size": 732,
+    "centroid": [
+      19.386083602905273,
+      8.705886840820312,
+      4.30576229095459
+    ],
+    "top_mbti": {
+      "ESFJ": 419,
+      "ENFP": 218,
+      "ENFJ": 28
+    },
+    "top_enneagram": {
+      "4w3": 110,
+      "6w7": 89,
+      "4w5": 68
+    },
+    "top_categories": {
+      "Pop Culture": 244,
+      "Internet": 116,
+      "The Arts": 87
+    },
+    "top_subcategories": {
+      "Actors and Actresses (USA)": 50,
+      "Writers (Literature, Modern)": 45,
+      "Actors & Actresses (Asia)": 41,
+      "General Vloggers": 34,
+      "European, Musicians": 31,
+      "Actors & Actresses (Europe)": 31,
+      "Voice Acting": 21,
+      "Kpop": 21,
+      "Internet Personalities (Other)": 20,
+      "Government\u00a0(USA)": 19
+    },
+    "percentage": 1.4387357993631824,
+    "label": "Sociable Hosts"
+  },
+  {
+    "cluster_id": 3,
+    "size": 491,
+    "centroid": [
+      -0.8176774382591248,
+      1.4184331893920898,
+      -21.67759132385254
+    ],
+    "top_mbti": {
+      "ENTP": 491
+    },
+    "top_enneagram": {},
+    "top_categories": {
+      "Pop Culture": 138,
+      "Internet": 126,
+      "The Arts": 53
+    },
+    "top_subcategories": {
+      "Comedians": 46,
+      "General Vloggers": 25,
+      "European, Musicians": 19,
+      "Writers (Literature, Modern)": 19,
+      "Hosts & Presenters": 19,
+      "TikTok Stars": 19,
+      "Actors & Actresses (Europe)": 18,
+      "Actors & Actresses (Asia)": 17,
+      "Scientists, Technology & Educators": 15,
+      "Internet Personalities (Other)": 15
+    },
+    "percentage": 0.9650536577695663,
+    "label": "Innovative Debaters"
+  },
+  {
+    "cluster_id": 4,
+    "size": 716,
+    "centroid": [
+      -5.011903762817383,
+      -10.817419052124023,
+      6.414255619049072
+    ],
+    "top_mbti": {
+      "ISTP": 334,
+      "INFJ": 204,
+      "ESTJ": 178
+    },
+    "top_enneagram": {
+      "1w9": 108,
+      "8w7": 103,
+      "1w2": 96
+    },
+    "top_categories": {
+      "Pop Culture": 163,
+      "Sports": 105,
+      "Internet": 100
+    },
+    "top_subcategories": {
+      "Football (Soccer)": 46,
+      "Actors and Actresses (USA)": 34,
+      "Historical Figures (1900s)": 33,
+      "European, Musicians": 31,
+      "Actors & Actresses (Asia)": 22,
+      "Writers (Literature, Modern)": 22,
+      "General Vloggers": 19,
+      "Internet Personalities (Other)": 18,
+      "Online Fictional Characters": 16,
+      "News & Journalists": 16
+    },
+    "percentage": 1.4072880223279218,
+    "label": "Principled Pragmatists"
+  },
+  {
+    "cluster_id": 5,
+    "size": 908,
+    "centroid": [
+      9.133962631225586,
+      -10.629643440246582,
+      -15.289141654968262
+    ],
+    "top_mbti": {
+      "ESTJ": 432,
+      "ENTP": 172,
+      "ISTJ": 64
+    },
+    "top_enneagram": {
+      "3w4": 146,
+      "6w7": 133,
+      "1w2": 119
+    },
+    "top_categories": {
+      "Sports": 201,
+      "Pop Culture": 184,
+      "Internet": 156
+    },
+    "top_subcategories": {
+      "Football (American)": 99,
+      "Actors and Actresses (USA)": 45,
+      "General Vloggers": 42,
+      "Baseball": 41,
+      "Internet Personalities (Other)": 37,
+      "Business": 35,
+      "Hosts & Presenters": 33,
+      "News & Journalists": 33,
+      "Kpop": 26,
+      "Comedians": 25
+    },
+    "percentage": 1.7846613467510513,
+    "label": "Driven Executives"
+  },
+  {
+    "cluster_id": 6,
+    "size": 901,
+    "centroid": [
+      -1.7602733373641968,
+      5.801972389221191,
+      27.28598403930664
+    ],
+    "top_mbti": {
+      "INTP": 336,
+      "INTJ": 235,
+      "INFJ": 84
+    },
+    "top_enneagram": {
+      "5w6": 304,
+      "5w4": 170,
+      "1w9": 96
+    },
+    "top_categories": {
+      "Internet": 216,
+      "Science": 178,
+      "Pop Culture": 122
+    },
+    "top_subcategories": {
+      "Scientists, Technology & Educators": 43,
+      "Internet Personalities (Other)": 43,
+      "Writers (Literature, Modern)": 42,
+      "Physics & Astronomy": 41,
+      "Mathematics": 37,
+      "General Vloggers": 28,
+      "Actors and Actresses (USA)": 24,
+      "Psychology & Neuroscience": 22,
+      "Comedians": 21,
+      "News & Journalists": 18
+    },
+    "percentage": 1.770902944298125,
+    "label": "Analytical Thinkers"
+  },
+  {
+    "cluster_id": 7,
+    "size": 1176,
+    "centroid": [
+      0.8799605369567871,
+      8.293774604797363,
+      18.539470672607422
+    ],
+    "top_mbti": {
+      "INTP": 414,
+      "INTJ": 354,
+      "INFJ": 118
+    },
+    "top_enneagram": {
+      "5w4": 408,
+      "5w6": 317,
+      "4w5": 98
+    },
+    "top_categories": {
+      "Internet": 246,
+      "The Arts": 213,
+      "Pop Culture": 203
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 107,
+      "Film Directors": 58,
+      "Internet Personalities (Other)": 49,
+      "General Vloggers": 44,
+      "European, Musicians": 43,
+      "Physics & Astronomy": 41,
+      "Criminals": 37,
+      "Mathematics": 35,
+      "Artists": 31,
+      "Comedians": 27
+    },
+    "percentage": 2.3114116120916703,
+    "label": "Visionary Architects"
+  },
+  {
+    "cluster_id": 8,
+    "size": 531,
+    "centroid": [
+      -4.7282490730285645,
+      24.15185546875,
+      7.741113662719727
+    ],
+    "top_mbti": {
+      "ENFJ": 447,
+      "ESFJ": 84
+    },
+    "top_enneagram": {
+      "9w1": 60,
+      "9w8": 24
+    },
+    "top_categories": {
+      "Pop Culture": 161,
+      "Internet": 94,
+      "Musician": 49
+    },
+    "top_subcategories": {
+      "Actors and Actresses (USA)": 31,
+      "European, Musicians": 27,
+      "Actors & Actresses (Asia)": 23,
+      "General Vloggers": 23,
+      "Hosts & Presenters": 20,
+      "Kpop": 16,
+      "Writers (Literature, Modern)": 15,
+      "Actors & Actresses (Europe)": 14,
+      "Performers": 14,
+      "Business": 14
+    },
+    "percentage": 1.0436731003577184,
+    "label": "Charismatic Teachers"
+  },
+  {
+    "cluster_id": 9,
+    "size": 711,
+    "centroid": [
+      9.123950958251953,
+      19.5571346282959,
+      -11.23265552520752
+    ],
+    "top_mbti": {
+      "ESFP": 462,
+      "INTP": 128,
+      "ENFJ": 121
+    },
+    "top_enneagram": {
+      "6w5": 96,
+      "9w1": 81,
+      "9w8": 40
+    },
+    "top_categories": {
+      "Pop Culture": 236,
+      "Internet": 140,
+      "Sports": 96
+    },
+    "top_subcategories": {
+      "European, Musicians": 52,
+      "Actors and Actresses (USA)": 45,
+      "General Vloggers": 37,
+      "Actors & Actresses (Asia)": 29,
+      "Internet Personalities (Other)": 28,
+      "Football (Soccer)": 26,
+      "Comedians": 23,
+      "Actors & Actresses (Europe)": 22,
+      "Performers": 20,
+      "Voice Acting": 19
+    },
+    "percentage": 1.3974605920044025,
+    "label": "Spontaneous Entertainers"
+  },
+  {
+    "cluster_id": 10,
+    "size": 801,
+    "centroid": [
+      0.11889194697141647,
+      18.40168571472168,
+      8.563517570495605
+    ],
+    "top_mbti": {
+      "ISTP": 323,
+      "ISTJ": 177,
+      "INTP": 68
+    },
+    "top_enneagram": {
+      "9w8": 208,
+      "6w5": 80,
+      "5w6": 76
+    },
+    "top_categories": {
+      "Sports": 237,
+      "Internet": 161,
+      "Pop Culture": 158
+    },
+    "top_subcategories": {
+      "Football (American)": 60,
+      "Baseball": 41,
+      "General Vloggers": 40,
+      "Kpop": 39,
+      "Actors and Actresses (USA)": 38,
+      "Football (Soccer)": 33,
+      "Comedians": 31,
+      "Criminals": 29,
+      "Internet Personalities (Other)": 27,
+      "European, Musicians": 26
+    },
+    "percentage": 1.5743543378277447,
+    "label": "Steady Craftsmen"
+  },
+  {
+    "cluster_id": 11,
+    "size": 1176,
+    "centroid": [
+      4.661144256591797,
+      13.148383140563965,
+      12.329344749450684
+    ],
+    "top_mbti": {
+      "ESTP": 379,
+      "ENTJ": 230,
+      "ESTJ": 134
+    },
+    "top_enneagram": {
+      "8w7": 468,
+      "7w8": 181,
+      "3w4": 132
+    },
+    "top_categories": {
+      "Pop Culture": 215,
+      "Internet": 211,
+      "Sports": 171
+    },
+    "top_subcategories": {
+      "Criminals": 131,
+      "General Vloggers": 55,
+      "Historical Figures (1900s)": 53,
+      "Comedians": 50,
+      "Actors and Actresses (USA)": 48,
+      "European, Musicians": 47,
+      "Internet Personalities (Other)": 41,
+      "Online Fictional Characters": 41,
+      "Football (Soccer)": 28,
+      "Football (American)": 28
+    },
+    "percentage": 2.3114116120916703,
+    "label": "Bold Challengers"
+  },
+  {
+    "cluster_id": 12,
+    "size": 407,
+    "centroid": [
+      3.1047046184539795,
+      -4.145179271697998,
+      -12.862719535827637
+    ],
+    "top_mbti": {
+      "INFP": 345,
+      "ENFP": 62
+    },
+    "top_enneagram": {
+      "4w5": 258,
+      "4w3": 87,
+      "8w7": 46
+    },
+    "top_categories": {
+      "The Arts": 114,
+      "Musician": 90,
+      "Pop Culture": 71
+    },
+    "top_subcategories": {
+      "European, Musicians": 59,
+      "Writers (Literature, Modern)": 58,
+      "Artists": 24,
+      "Writers (Literature, Classic)": 23,
+      "Film Directors": 20,
+      "Actors and Actresses (USA)": 11,
+      "Internet Personalities (Other)": 11,
+      "Criminals": 11,
+      "Brazil, Musicians": 10,
+      "Virtual Youtubers": 10
+    },
+    "percentage": 0.7999528283344471,
+    "label": "Romantic Idealists"
+  },
+  {
+    "cluster_id": 13,
+    "size": 496,
+    "centroid": [
+      5.057535171508789,
+      26.665327072143555,
+      0.6801099181175232
+    ],
+    "top_mbti": {
+      "ENFP": 148,
+      "INTP": 127,
+      "ESFP": 112
+    },
+    "top_enneagram": {
+      "6w7": 98,
+      "4w5": 98,
+      "9w1": 94
+    },
+    "top_categories": {
+      "Pop Culture": 126,
+      "Internet": 120,
+      "The Arts": 50
+    },
+    "top_subcategories": {
+      "General Vloggers": 31,
+      "Actors and Actresses (USA)": 27,
+      "Writers (Literature, Modern)": 23,
+      "European, Musicians": 20,
+      "Actors & Actresses (Asia)": 17,
+      "Internet Personalities (Other)": 17,
+      "Comedians": 16,
+      "Kpop": 14,
+      "TikTok Stars": 14,
+      "Online Fictional Characters": 13
+    },
+    "percentage": 0.9748810880930855,
+    "label": "Eclectic Creatives"
+  },
+  {
+    "cluster_id": 14,
+    "size": 697,
+    "centroid": [
+      -6.200313091278076,
+      21.48099136352539,
+      -3.906224012374878
+    ],
+    "top_mbti": {
+      "ISFJ": 546,
+      "ESFJ": 87,
+      "ESFP": 64
+    },
+    "top_enneagram": {
+      "7w6": 67,
+      "2w3": 52,
+      "7w8": 20
+    },
+    "top_categories": {
+      "Pop Culture": 208,
+      "Sports": 159,
+      "Internet": 108
+    },
+    "top_subcategories": {
+      "Football (American)": 54,
+      "Actors & Actresses (Asia)": 41,
+      "Kpop": 34,
+      "European, Musicians": 34,
+      "General Vloggers": 31,
+      "Football (Soccer)": 26,
+      "Actors and Actresses (USA)": 23,
+      "Actors & Actresses (Europe)": 23,
+      "Voice Acting": 23,
+      "Hosts & Presenters": 19
+    },
+    "percentage": 1.3699437870985494,
+    "label": "Supportive Defenders"
+  },
+  {
+    "cluster_id": 15,
+    "size": 651,
+    "centroid": [
+      21.442398071289062,
+      12.141268730163574,
+      -9.20236587524414
+    ],
+    "top_mbti": {
+      "INFJ": 472,
+      "ESFJ": 179
+    },
+    "top_enneagram": {
+      "3w2": 138,
+      "3w4": 41
+    },
+    "top_categories": {
+      "Pop Culture": 163,
+      "Internet": 115,
+      "The Arts": 97
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 44,
+      "Actors and Actresses (USA)": 29,
+      "European, Musicians": 28,
+      "General Vloggers": 27,
+      "Actors & Actresses (Asia)": 25,
+      "Actors & Actresses (Europe)": 24,
+      "Writers (Literature, Classic)": 21,
+      "Hosts & Presenters": 19,
+      "Kpop": 16,
+      "Internet Personalities (Other)": 15
+    },
+    "percentage": 1.2795314281221746,
+    "label": "Empathetic Achievers"
+  },
+  {
+    "cluster_id": 16,
+    "size": 481,
+    "centroid": [
+      -3.8243167400360107,
+      6.24949836730957,
+      9.135601997375488
+    ],
+    "top_mbti": {
+      "INTJ": 431,
+      "ENFJ": 50
+    },
+    "top_enneagram": {
+      "5w6": 245,
+      "5w4": 186,
+      "8w9": 27
+    },
+    "top_categories": {
+      "Science": 103,
+      "Internet": 73,
+      "The Arts": 64
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 37,
+      "Historical Figures (1900s)": 20,
+      "Physics & Astronomy": 18,
+      "European, Musicians": 17,
+      "Engineers & Inventors": 17,
+      "Biology & Medicine\u00a0": 17,
+      "Criminals": 16,
+      "Mathematics": 14,
+      "News & Journalists": 14,
+      "Internet Personalities (Other)": 11
+    },
+    "percentage": 0.9453987971225285,
+    "label": "Strategic Masterminds"
+  },
+  {
+    "cluster_id": 17,
+    "size": 1000,
+    "centroid": [
+      2.07639217376709,
+      1.9766191244125366,
+      16.527921676635742
+    ],
+    "top_mbti": {
+      "ISFP": 317,
+      "ISFJ": 145,
+      "ISTJ": 95
+    },
+    "top_enneagram": {
+      "4w3": 130,
+      "1w9": 95,
+      "4w5": 83
+    },
+    "top_categories": {
+      "Pop Culture": 224,
+      "Sports": 204,
+      "Internet": 157
+    },
+    "top_subcategories": {
+      "Football (American)": 65,
+      "Actors and Actresses (USA)": 60,
+      "European, Musicians": 59,
+      "Baseball": 58,
+      "Kpop": 50,
+      "General Vloggers": 44,
+      "Voice Acting": 33,
+      "Internet Personalities (Other)": 31,
+      "Actors & Actresses (Asia)": 29,
+      "Football (Soccer)": 24
+    },
+    "percentage": 1.9654860647038013,
+    "label": "Artistic Athletes"
+  },
+  {
+    "cluster_id": 18,
+    "size": 653,
+    "centroid": [
+      -11.723932266235352,
+      -4.314270496368408,
+      -1.7317428588867188
+    ],
+    "top_mbti": {
+      "INTP": 515,
+      "INTJ": 74,
+      "ISTJ": 64
+    },
+    "top_enneagram": {
+      "3w4": 60,
+      "9w1": 41,
+      "9w8": 23
+    },
+    "top_categories": {
+      "Internet": 151,
+      "Pop Culture": 117,
+      "The Arts": 89
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 33,
+      "European, Musicians": 25,
+      "General Vloggers": 25,
+      "Internet Personalities (Other)": 22,
+      "Comedians": 21,
+      "Actors and Actresses (USA)": 19,
+      "Actors & Actresses (Asia)": 18,
+      "News & Journalists": 17,
+      "Kpop": 17,
+      "Business": 15
+    },
+    "percentage": 1.2834624002515822,
+    "label": "Logical Analysts"
+  },
+  {
+    "cluster_id": 19,
+    "size": 927,
+    "centroid": [
+      6.681382179260254,
+      1.7394251823425293,
+      11.025293350219727
+    ],
+    "top_mbti": {
+      "INFJ": 303,
+      "INFP": 260,
+      "ISFJ": 82
+    },
+    "top_enneagram": {
+      "9w1": 226,
+      "4w5": 191,
+      "6w5": 81
+    },
+    "top_categories": {
+      "Pop Culture": 237,
+      "Internet": 221,
+      "The Arts": 125
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 59,
+      "European, Musicians": 58,
+      "Actors and Actresses (USA)": 54,
+      "General Vloggers": 48,
+      "Actors & Actresses (Asia)": 48,
+      "Kpop": 47,
+      "Actors and Actresses (UK & Ireland)": 34,
+      "Internet Personalities (Other)": 29,
+      "Writers (Literature, Classic)": 29,
+      "Psychology & Personal Development": 21
+    },
+    "percentage": 1.8220055819804237,
+    "label": "Harmonious Dreamers"
+  },
+  {
+    "cluster_id": 20,
+    "size": 483,
+    "centroid": [
+      18.652387619018555,
+      -3.0451691150665283,
+      -7.712771415710449
+    ],
+    "top_mbti": {
+      "ENFP": 332,
+      "ESFJ": 102,
+      "ESFP": 17
+    },
+    "top_enneagram": {
+      "7w6": 229,
+      "2w3": 125,
+      "7w8": 95
+    },
+    "top_categories": {
+      "Internet": 158,
+      "Pop Culture": 138,
+      "Sports": 72
+    },
+    "top_subcategories": {
+      "General Vloggers": 45,
+      "Football (American)": 34,
+      "Comedians": 31,
+      "Actors and Actresses (USA)": 30,
+      "Internet Personalities (Other)": 26,
+      "TikTok Stars": 24,
+      "European, Musicians": 20,
+      "Voice Acting": 20,
+      "Baseball": 18,
+      "Actors & Actresses (Asia)": 17
+    },
+    "percentage": 0.9493297692519361,
+    "label": "Enthusiastic Influencers"
+  },
+  {
+    "cluster_id": 21,
+    "size": 451,
+    "centroid": [
+      -1.2248344421386719,
+      18.053730010986328,
+      -14.331216812133789
+    ],
+    "top_mbti": {
+      "ENTP": 229,
+      "ISTJ": 222
+    },
+    "top_enneagram": {
+      "6w5": 179,
+      "5w4": 117,
+      "5w6": 112
+    },
+    "top_categories": {
+      "Internet": 79,
+      "Sports": 70,
+      "Pop Culture": 64
+    },
+    "top_subcategories": {
+      "Historical Figures (1900s)": 21,
+      "Writers (Literature, Modern)": 17,
+      "Internet Personalities (Other)": 17,
+      "Baseball": 16,
+      "General Vloggers": 16,
+      "Football (Soccer)": 16,
+      "News & Journalists": 16,
+      "Comedians": 14,
+      "Scientists, Technology & Educators": 12,
+      "Criminals": 11
+    },
+    "percentage": 0.8864342151814144,
+    "label": "Intellectual Skeptics"
+  },
+  {
+    "cluster_id": 22,
+    "size": 2017,
+    "centroid": [
+      12.28593635559082,
+      7.417119026184082,
+      -6.6520891189575195
+    ],
+    "top_mbti": {
+      "ESFP": 709,
+      "ESTP": 331,
+      "INFJ": 261
+    },
+    "top_enneagram": {
+      "7w8": 378,
+      "7w6": 288,
+      "3w2": 221
+    },
+    "top_categories": {
+      "Internet": 470,
+      "Pop Culture": 439,
+      "Sports": 360
+    },
+    "top_subcategories": {
+      "General Vloggers": 157,
+      "Actors and Actresses (USA)": 102,
+      "European, Musicians": 99,
+      "Football (American)": 98,
+      "Kpop": 89,
+      "Internet Personalities (Other)": 75,
+      "Comedians": 66,
+      "Baseball": 60,
+      "Actors & Actresses (Asia)": 54,
+      "TikTok Stars": 54
+    },
+    "percentage": 3.964385392507567,
+    "label": "Energetic Performers"
+  },
+  {
+    "cluster_id": 23,
+    "size": 591,
+    "centroid": [
+      -11.564338684082031,
+      6.230023384094238,
+      -15.644761085510254
+    ],
+    "top_mbti": {
+      "INFP": 591
+    },
+    "top_enneagram": {
+      "5w4": 77,
+      "5w6": 24
+    },
+    "top_categories": {
+      "The Arts": 151,
+      "Pop Culture": 132,
+      "Musician": 95
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 69,
+      "European, Musicians": 63,
+      "Writers (Literature, Classic)": 28,
+      "Actors & Actresses (Europe)": 25,
+      "Artists": 25,
+      "Kpop": 24,
+      "Actors & Actresses (Asia)": 21,
+      "Film Directors": 19,
+      "Actors and Actresses (USA)": 18,
+      "Internet Personalities (Other)": 15
+    },
+    "percentage": 1.1616022642399466,
+    "label": "Introspective Artists"
+  },
+  {
+    "cluster_id": 24,
+    "size": 410,
+    "centroid": [
+      12.192468643188477,
+      18.217763900756836,
+      6.377623081207275
+    ],
+    "top_mbti": {
+      "ENFJ": 410
+    },
+    "top_enneagram": {
+      "3w2": 174,
+      "1w2": 115,
+      "3w4": 73
+    },
+    "top_categories": {
+      "Pop Culture": 113,
+      "Internet": 82,
+      "Sports": 41
+    },
+    "top_subcategories": {
+      "General Vloggers": 24,
+      "Actors & Actresses (Asia)": 22,
+      "Actors and Actresses (USA)": 19,
+      "Hosts & Presenters": 16,
+      "European, Musicians": 16,
+      "TikTok Stars": 16,
+      "Historical Figures (1900s)": 16,
+      "Kpop": 15,
+      "Football (Soccer)": 13,
+      "Internet Personalities (Other)": 11
+    },
+    "percentage": 0.8058492865285585,
+    "label": "Inspiring Mentors"
+  },
+  {
+    "cluster_id": 25,
+    "size": 905,
+    "centroid": [
+      12.779470443725586,
+      19.425561904907227,
+      0.19877487421035767
+    ],
+    "top_mbti": {
+      "ISFP": 369,
+      "ISTP": 299,
+      "INFJ": 237
+    },
+    "top_enneagram": {
+      "5w4": 234,
+      "4w3": 170,
+      "5w6": 158
+    },
+    "top_categories": {
+      "Pop Culture": 169,
+      "Internet": 157,
+      "Sports": 122
+    },
+    "top_subcategories": {
+      "Criminals": 71,
+      "European, Musicians": 63,
+      "Writers (Literature, Modern)": 44,
+      "Artists": 33,
+      "Baseball": 29,
+      "General Vloggers": 28,
+      "Football (Soccer)": 27,
+      "Actors & Actresses (Asia)": 27,
+      "Actors and Actresses (USA)": 27,
+      "Internet Personalities (Other)": 23
+    },
+    "percentage": 1.7787648885569403,
+    "label": "Independent Creators"
+  },
+  {
+    "cluster_id": 26,
+    "size": 947,
+    "centroid": [
+      7.891241550445557,
+      8.627477645874023,
+      10.665572166442871
+    ],
+    "top_mbti": {
+      "ISTJ": 233,
+      "ISTP": 180,
+      "INTJ": 148
+    },
+    "top_enneagram": {
+      "6w5": 159,
+      "1w9": 151,
+      "8w9": 118
+    },
+    "top_categories": {
+      "Historical": 175,
+      "Pop Culture": 153,
+      "Internet": 137
+    },
+    "top_subcategories": {
+      "Historical Figures (1900s)": 71,
+      "Criminals": 44,
+      "Football (Soccer)": 32,
+      "Writers (Literature, Modern)": 26,
+      "Actors and Actresses (USA)": 26,
+      "Government\u00a0(USA)": 26,
+      "General Vloggers": 25,
+      "Baseball": 25,
+      "Historical Figures (1800s)": 22,
+      "Internet Personalities (Other)": 21
+    },
+    "percentage": 1.8613153032744998,
+    "label": "Disciplined Leaders"
+  },
+  {
+    "cluster_id": 27,
+    "size": 1337,
+    "centroid": [
+      9.716072082519531,
+      10.346364974975586,
+      6.799920082092285
+    ],
+    "top_mbti": {
+      "ESFJ": 372,
+      "ESFP": 288,
+      "ENFP": 209
+    },
+    "top_enneagram": {
+      "7w6": 346,
+      "3w2": 262,
+      "6w7": 154
+    },
+    "top_categories": {
+      "Pop Culture": 460,
+      "Internet": 372,
+      "Sports": 148
+    },
+    "top_subcategories": {
+      "General Vloggers": 138,
+      "Actors and Actresses (USA)": 116,
+      "Kpop": 80,
+      "Comedians": 63,
+      "Voice Acting": 57,
+      "TikTok Stars": 56,
+      "Actors & Actresses (Asia)": 46,
+      "Internet Personalities (Other)": 45,
+      "Hosts & Presenters": 44,
+      "European, Musicians": 34
+    },
+    "percentage": 2.627854868508982,
+    "label": "Social Butterflies"
+  },
+  {
+    "cluster_id": 28,
+    "size": 550,
+    "centroid": [
+      9.917503356933594,
+      -11.367366790771484,
+      11.895591735839844
+    ],
+    "top_mbti": {
+      "ISTJ": 550
+    },
+    "top_enneagram": {},
+    "top_categories": {
+      "Sports": 152,
+      "Pop Culture": 83,
+      "Science": 51
+    },
+    "top_subcategories": {
+      "Football (American)": 52,
+      "Football (Soccer)": 26,
+      "Baseball": 21,
+      "Activists": 16,
+      "Actors & Actresses (Asia)": 16,
+      "Biology & Medicine\u00a0": 16,
+      "Government\u00a0(USA)": 16,
+      "News & Journalists": 15,
+      "Historical Figures (1900s)": 14,
+      "Business": 13
+    },
+    "percentage": 1.0810173355870907,
+    "label": "Methodical Organizers"
+  },
+  {
+    "cluster_id": 29,
+    "size": 1084,
+    "centroid": [
+      6.298360347747803,
+      -7.896502494812012,
+      13.747491836547852
+    ],
+    "top_mbti": {
+      "ENFP": 660,
+      "ENTP": 122,
+      "INFP": 70
+    },
+    "top_enneagram": {
+      "7w6": 421,
+      "4w3": 163,
+      "7w8": 129
+    },
+    "top_categories": {
+      "Internet": 359,
+      "Pop Culture": 348,
+      "Musician": 119
+    },
+    "top_subcategories": {
+      "General Vloggers": 107,
+      "Actors and Actresses (USA)": 80,
+      "Comedians": 66,
+      "Kpop": 58,
+      "European, Musicians": 56,
+      "Voice Acting": 55,
+      "Internet Personalities (Other)": 53,
+      "Brazil, Musicians": 36,
+      "Actors & Actresses (Asia)": 32,
+      "TikTok Stars": 31
+    },
+    "percentage": 2.1305868941389203,
+    "label": "Bubbly Optimists"
+  },
+  {
+    "cluster_id": 30,
+    "size": 405,
+    "centroid": [
+      -11.873440742492676,
+      1.8792669773101807,
+      5.009294033050537
+    ],
+    "top_mbti": {
+      "ESTP": 405
+    },
+    "top_enneagram": {},
+    "top_categories": {
+      "Pop Culture": 127,
+      "Internet": 76,
+      "Sports": 52
+    },
+    "top_subcategories": {
+      "European, Musicians": 33,
+      "Actors & Actresses (Asia)": 22,
+      "General Vloggers": 19,
+      "Actors and Actresses (USA)": 17,
+      "Football (Soccer)": 16,
+      "Hosts & Presenters": 16,
+      "TikTok Stars": 15,
+      "Actors & Actresses (Europe)": 15,
+      "Comedians": 15,
+      "Internet Personalities (Other)": 14
+    },
+    "percentage": 0.7960218562050395,
+    "label": "Daring Risk-Takers"
+  },
+  {
+    "cluster_id": 31,
+    "size": 630,
+    "centroid": [
+      -9.231914520263672,
+      7.898707389831543,
+      -1.632775902748108
+    ],
+    "top_mbti": {
+      "INFP": 303,
+      "ENTJ": 235,
+      "INFJ": 92
+    },
+    "top_enneagram": {
+      "9w1": 257,
+      "3w4": 147,
+      "3w2": 88
+    },
+    "top_categories": {
+      "Pop Culture": 157,
+      "Internet": 122,
+      "The Arts": 72
+    },
+    "top_subcategories": {
+      "Actors & Actresses (Asia)": 37,
+      "Actors and Actresses (USA)": 35,
+      "Writers (Literature, Modern)": 29,
+      "Business": 29,
+      "European, Musicians": 29,
+      "Kpop": 27,
+      "Internet Personalities (Other)": 26,
+      "General Vloggers": 20,
+      "Virtual Youtubers": 17,
+      "Football (Soccer)": 16
+    },
+    "percentage": 1.2382562207633947,
+    "label": "Balanced Mediators"
+  },
+  {
+    "cluster_id": 32,
+    "size": 1464,
+    "centroid": [
+      -5.072535037994385,
+      12.375234603881836,
+      -8.73093318939209
+    ],
+    "top_mbti": {
+      "INFP": 736,
+      "INFJ": 298,
+      "ISFP": 116
+    },
+    "top_enneagram": {
+      "4w5": 474,
+      "4w3": 229,
+      "5w4": 154
+    },
+    "top_categories": {
+      "Pop Culture": 366,
+      "Internet": 293,
+      "The Arts": 279
+    },
+    "top_subcategories": {
+      "European, Musicians": 141,
+      "Writers (Literature, Modern)": 90,
+      "Actors and Actresses (USA)": 89,
+      "Writers (Literature, Classic)": 84,
+      "General Vloggers": 58,
+      "Kpop": 56,
+      "Actors & Actresses (Asia)": 53,
+      "Artists": 51,
+      "Film Directors": 47,
+      "Artists & Animators": 47
+    },
+    "percentage": 2.877471598726365,
+    "label": "Melancholic Poets"
+  },
+  {
+    "cluster_id": 33,
+    "size": 1106,
+    "centroid": [
+      -2.9585628509521484,
+      7.637679576873779,
+      -11.7723970413208
+    ],
+    "top_mbti": {
+      "ENTJ": 422,
+      "ENTP": 209,
+      "INTJ": 126
+    },
+    "top_enneagram": {
+      "3w4": 204,
+      "6w5": 115,
+      "6w7": 112
+    },
+    "top_categories": {
+      "Pop Culture": 231,
+      "Internet": 216,
+      "Historical": 166
+    },
+    "top_subcategories": {
+      "Business": 65,
+      "Comedians": 57,
+      "General Vloggers": 56,
+      "Actors and Actresses (USA)": 49,
+      "Internet Personalities (Other)": 46,
+      "Historical Figures (1900s)": 46,
+      "Criminals": 35,
+      "Writers (Literature, Modern)": 31,
+      "News & Journalists": 27,
+      "Football (Soccer)": 26
+    },
+    "percentage": 2.1738275875624042,
+    "label": "Ambitious Commanders"
+  },
+  {
+    "cluster_id": 34,
+    "size": 507,
+    "centroid": [
+      -15.261073112487793,
+      9.147758483886719,
+      3.84262752532959
+    ],
+    "top_mbti": {
+      "ISFP": 507
+    },
+    "top_enneagram": {},
+    "top_categories": {
+      "Pop Culture": 143,
+      "Sports": 116,
+      "Musician": 93
+    },
+    "top_subcategories": {
+      "European, Musicians": 66,
+      "Football (Soccer)": 38,
+      "Actors & Actresses (Asia)": 29,
+      "Football (American)": 23,
+      "Actors and Actresses (USA)": 22,
+      "General Vloggers": 18,
+      "Performers": 17,
+      "Models": 15,
+      "Kpop": 14,
+      "Baseball": 14
+    },
+    "percentage": 0.9965014348048272,
+    "label": "Gentle Performers"
+  },
+  {
+    "cluster_id": 35,
+    "size": 1073,
+    "centroid": [
+      14.641525268554688,
+      4.420425891876221,
+      0.5329042673110962
+    ],
+    "top_mbti": {
+      "ENFP": 275,
+      "ENFJ": 229,
+      "ENTP": 121
+    },
+    "top_enneagram": {
+      "4w3": 239,
+      "3w2": 147,
+      "3w4": 140
+    },
+    "top_categories": {
+      "Pop Culture": 298,
+      "Internet": 239,
+      "The Arts": 126
+    },
+    "top_subcategories": {
+      "General Vloggers": 70,
+      "European, Musicians": 69,
+      "Actors and Actresses (USA)": 63,
+      "Comedians": 43,
+      "Writers (Literature, Classic)": 39,
+      "Internet Personalities (Other)": 36,
+      "Writers (Literature, Modern)": 34,
+      "Voice Acting": 33,
+      "Kpop": 30,
+      "Criminals": 29
+    },
+    "percentage": 2.108966547427179,
+    "label": "Expressive Advocates"
+  },
+  {
+    "cluster_id": 36,
+    "size": 657,
+    "centroid": [
+      -4.476100444793701,
+      8.499624252319336,
+      2.8119750022888184
+    ],
+    "top_mbti": {
+      "INFJ": 354,
+      "ISFP": 133,
+      "ENTP": 54
+    },
+    "top_enneagram": {
+      "4w5": 256,
+      "4w3": 97,
+      "8w7": 82
+    },
+    "top_categories": {
+      "Pop Culture": 171,
+      "The Arts": 112,
+      "Internet": 109
+    },
+    "top_subcategories": {
+      "Writers (Literature, Modern)": 52,
+      "European, Musicians": 51,
+      "Actors & Actresses (Asia)": 33,
+      "General Vloggers": 26,
+      "Writers (Literature, Classic)": 24,
+      "Kpop": 22,
+      "Artists": 21,
+      "Film Directors": 18,
+      "Actors and Actresses (USA)": 17,
+      "Actors and Actresses (UK & Ireland)": 16
+    },
+    "percentage": 1.2913243445103975,
+    "label": "Sensitive Visionaries"
+  },
+  {
+    "cluster_id": 37,
+    "size": 799,
+    "centroid": [
+      3.741743326187134,
+      3.422724485397339,
+      -9.263686180114746
+    ],
+    "top_mbti": {
+      "INFP": 393,
+      "ENFJ": 316,
+      "ISFP": 40
+    },
+    "top_enneagram": {
+      "4w5": 259,
+      "2w3": 217,
+      "4w3": 134
+    },
+    "top_categories": {
+      "Pop Culture": 229,
+      "Internet": 162,
+      "The Arts": 131
+    },
+    "top_subcategories": {
+      "European, Musicians": 64,
+      "Writers (Literature, Modern)": 57,
+      "Actors and Actresses (USA)": 42,
+      "General Vloggers": 42,
+      "Actors & Actresses (Asia)": 30,
+      "Writers (Literature, Classic)": 29,
+      "Kpop": 29,
+      "Internet Personalities (Other)": 25,
+      "Actors and Actresses (UK & Ireland)": 25,
+      "Virtual Youtubers": 22
+    },
+    "percentage": 1.5704233656983373,
+    "label": "Compassionate Helpers"
+  },
+  {
+    "cluster_id": 38,
+    "size": 614,
+    "centroid": [
+      6.153178691864014,
+      -6.821347236633301,
+      -1.7250628471374512
+    ],
+    "top_mbti": {
+      "ESFP": 614
+    },
+    "top_enneagram": {
+      "7w6": 316,
+      "7w8": 236,
+      "9w8": 38
+    },
+    "top_categories": {
+      "Pop Culture": 171,
+      "Internet": 163,
+      "Sports": 117
+    },
+    "top_subcategories": {
+      "General Vloggers": 57,
+      "European, Musicians": 54,
+      "Comedians": 37,
+      "TikTok Stars": 35,
+      "Actors and Actresses (USA)": 29,
+      "Football (Soccer)": 29,
+      "Internet Personalities (Other)": 26,
+      "Kpop": 25,
+      "Actors & Actresses (Asia)": 21,
+      "Performers": 16
+    },
+    "percentage": 1.206808443728134,
+    "label": "Vivacious Entertainers"
+  },
+  {
+    "cluster_id": 39,
+    "size": 709,
+    "centroid": [
+      -0.07964031398296356,
+      -1.6253701448440552,
+      2.1349222660064697
+    ],
+    "top_mbti": {
+      "ENTJ": 304,
+      "ESFJ": 206,
+      "ESTP": 53
+    },
+    "top_enneagram": {
+      "8w7": 347,
+      "8w9": 185
+    },
+    "top_categories": {
+      "Pop Culture": 146,
+      "Internet": 133,
+      "Historical": 121
+    },
+    "top_subcategories": {
+      "Criminals": 40,
+      "General Vloggers": 34,
+      "European, Musicians": 31,
+      "Internet Personalities (Other)": 28,
+      "Online Fictional Characters": 28,
+      "Hosts & Presenters": 27,
+      "Actors & Actresses (Asia)": 25,
+      "Historical Figures (1900s)": 25,
+      "Actors and Actresses (USA)": 24,
+      "Football (Soccer)": 22
+    },
+    "percentage": 1.3935296198749951,
+    "label": "Assertive Directors"
+  },
+  {
+    "cluster_id": 40,
+    "size": 3826,
+    "centroid": [
+      0.9396774768829346,
+      -2.181246042251587,
+      -4.2601847648620605
+    ],
+    "top_mbti": {
+      "ENTP": 1022,
+      "ESTP": 511,
+      "ENFP": 470
+    },
+    "top_enneagram": {
+      "7w8": 693,
+      "7w6": 440,
+      "5w6": 375
+    },
+    "top_categories": {
+      "Internet": 1028,
+      "Pop Culture": 952,
+      "The Arts": 329
+    },
+    "top_subcategories": {
+      "General Vloggers": 263,
+      "Comedians": 215,
+      "Actors and Actresses (USA)": 186,
+      "Internet Personalities (Other)": 163,
+      "Writers (Literature, Modern)": 152,
+      "European, Musicians": 133,
+      "Actors & Actresses (Asia)": 121,
+      "Kpop": 111,
+      "TikTok Stars": 97,
+      "Scientists, Technology & Educators": 97
+    },
+    "percentage": 7.519949683556744,
+    "label": "Dynamic Innovators"
+  },
+  {
+    "cluster_id": 41,
+    "size": 420,
+    "centroid": [
+      6.449058532714844,
+      2.018861770629883,
+      -4.542250633239746
+    ],
+    "top_mbti": {
+      "INFP": 59,
+      "ISFJ": 57,
+      "ISFP": 49
+    },
+    "top_enneagram": {
+      "9w1": 255,
+      "9w8": 165
+    },
+    "top_categories": {
+      "Internet": 150,
+      "Pop Culture": 102,
+      "Sports": 46
+    },
+    "top_subcategories": {
+      "General Vloggers": 52,
+      "Actors and Actresses (USA)": 36,
+      "Kpop": 30,
+      "Internet Personalities (Other)": 24,
+      "Actors & Actresses (Asia)": 18,
+      "Football (Soccer)": 17,
+      "TikTok Stars": 17,
+      "European, Musicians": 16,
+      "Artists & Animators": 14,
+      "Online Fictional Characters": 14
+    },
+    "percentage": 0.8255041471755965,
+    "label": "Peaceful Mediators"
+  },
+  {
+    "cluster_id": 42,
+    "size": 462,
+    "centroid": [
+      -0.010843181982636452,
+      20.537036895751953,
+      2.611771583557129
+    ],
+    "top_mbti": {
+      "ENTJ": 369,
+      "ESFJ": 93
+    },
+    "top_enneagram": {
+      "6w7": 75,
+      "6w5": 18
+    },
+    "top_categories": {
+      "Pop Culture": 96,
+      "Internet": 78,
+      "Historical": 55
+    },
+    "top_subcategories": {
+      "Business": 30,
+      "Government\u00a0(USA)": 26,
+      "Historical Figures (1900s)": 17,
+      "General Vloggers": 17,
+      "Actors & Actresses (Asia)": 17,
+      "News & Journalists": 16,
+      "Actors and Actresses (USA)": 16,
+      "European, Musicians": 11,
+      "Hosts & Presenters": 10,
+      "Football (Soccer)": 10
+    },
+    "percentage": 0.9080545618931561,
+    "label": "Strategic Executives"
+  },
+  {
+    "cluster_id": 43,
+    "size": 902,
+    "centroid": [
+      1.6574218273162842,
+      12.972160339355469,
+      -0.7841522693634033
+    ],
+    "top_mbti": {
+      "ISFP": 256,
+      "ESFP": 157,
+      "INTJ": 132
+    },
+    "top_enneagram": {
+      "4w3": 250,
+      "3w2": 224,
+      "3w4": 184
+    },
+    "top_categories": {
+      "Internet": 222,
+      "Pop Culture": 216,
+      "Musician": 136
+    },
+    "top_subcategories": {
+      "European, Musicians": 81,
+      "General Vloggers": 63,
+      "Kpop": 42,
+      "Internet Personalities (Other)": 40,
+      "Actors & Actresses (Asia)": 36,
+      "Actors and Actresses (USA)": 36,
+      "Football (Soccer)": 33,
+      "TikTok Stars": 30,
+      "Hosts & Presenters": 23,
+      "Online Fictional Characters": 20
+    },
+    "percentage": 1.7728684303628288,
+    "label": "Ambitious Performers"
+  },
+  {
+    "cluster_id": 44,
+    "size": 528,
+    "centroid": [
+      5.177562236785889,
+      2.9006218910217285,
+      0.39470991492271423
+    ],
+    "top_mbti": {
+      "ENFP": 528
+    },
+    "top_enneagram": {
+      "7w6": 377,
+      "7w8": 151
+    },
+    "top_categories": {
+      "Pop Culture": 204,
+      "Internet": 194,
+      "Musician": 43
+    },
+    "top_subcategories": {
+      "Comedians": 70,
+      "General Vloggers": 61,
+      "TikTok Stars": 40,
+      "Actors and Actresses (USA)": 28,
+      "European, Musicians": 27,
+      "Actors & Actresses (Asia)": 25,
+      "Kpop": 17,
+      "Internet Personalities (Other)": 17,
+      "Hosts & Presenters": 16,
+      "Actors & Actresses (Europe)": 15
+    },
+    "percentage": 1.037776642163607,
+    "label": "Cheerful Communicators"
+  },
+  {
+    "cluster_id": 45,
+    "size": 1096,
+    "centroid": [
+      0.917574942111969,
+      7.689444065093994,
+      -3.345102310180664
+    ],
+    "top_mbti": {
+      "INTP": 322,
+      "ENFP": 199,
+      "ENTP": 174
+    },
+    "top_enneagram": {
+      "7w6": 425,
+      "7w8": 296,
+      "5w4": 179
+    },
+    "top_categories": {
+      "Internet": 433,
+      "Pop Culture": 207,
+      "Musician": 89
+    },
+    "top_subcategories": {
+      "General Vloggers": 143,
+      "Comedians": 71,
+      "Internet Personalities (Other)": 59,
+      "TikTok Stars": 55,
+      "European, Musicians": 49,
+      "Writers (Literature, Modern)": 38,
+      "Actors and Actresses (USA)": 37,
+      "Kpop": 32,
+      "Online Fictional Characters": 25,
+      "Hosts, Critics, Producers & Editors": 22
+    },
+    "percentage": 2.154172726915366,
+    "label": "Curious Adventurers"
+  },
+  {
+    "cluster_id": 46,
+    "size": 416,
+    "centroid": [
+      2.111457109451294,
+      9.094011306762695,
+      1.9407668113708496
+    ],
+    "top_mbti": {
+      "ENTP": 416
+    },
+    "top_enneagram": {
+      "7w8": 236,
+      "7w6": 180
+    },
+    "top_categories": {
+      "Internet": 148,
+      "Pop Culture": 145,
+      "The Arts": 23
+    },
+    "top_subcategories": {
+      "Comedians": 68,
+      "General Vloggers": 36,
+      "Internet Personalities (Other)": 28,
+      "TikTok Stars": 23,
+      "Actors and Actresses (USA)": 21,
+      "European, Musicians": 14,
+      "Voice Acting": 11,
+      "Actors & Actresses (Asia)": 11,
+      "Writers (Literature, Modern)": 10,
+      "Hosts & Presenters": 10
+    },
+    "percentage": 0.8176422029167814,
+    "label": "Witty Comedians"
+  },
+  {
+    "cluster_id": 47,
+    "size": 551,
+    "centroid": [
+      4.272629261016846,
+      9.000175476074219,
+      -0.7048642635345459
+    ],
+    "top_mbti": {
+      "INFP": 125,
+      "ISFP": 74,
+      "ENFP": 70
+    },
+    "top_enneagram": {
+      "4w3": 286,
+      "4w5": 265
+    },
+    "top_categories": {
+      "Internet": 156,
+      "Pop Culture": 121,
+      "Musician": 115
+    },
+    "top_subcategories": {
+      "European, Musicians": 69,
+      "General Vloggers": 42,
+      "Writers (Literature, Modern)": 36,
+      "Actors and Actresses (USA)": 32,
+      "Kpop": 29,
+      "Internet Personalities (Other)": 28,
+      "Writers (Literature, Classic)": 19,
+      "Artists & Animators": 18,
+      "Latin American, Musicians": 18,
+      "TikTok Stars": 16
+    },
+    "percentage": 1.0829828216517945,
+    "label": "Creative Romantics"
+  }
+]
