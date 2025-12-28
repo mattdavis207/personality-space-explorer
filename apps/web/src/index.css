@@ -7,9 +7,21 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Color Theme Variables */
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+
+  --accent-primary: #3b82f6;
+  --accent-secondary: #60a5fa;
+  --accent-tertiary: #93c5fd;
+
+  --border-color: #4b5563;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

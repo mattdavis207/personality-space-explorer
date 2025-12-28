@@ -1,43 +1,362 @@
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Main Container */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Sidebar */
+.sidebar {
+  background-color: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+  min-width: 15%;
+  max-width: 60%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Cluster Info Card */
+.cluster-card {
+  background-color: var(--bg-tertiary);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }
 
-.card {
-  padding: 2em;
+.cluster-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
 }
 
-.read-the-docs {
-  color: #888;
+.cluster-metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.metadata-item {
+  font-size: 14px;
+}
+
+.metadata-key {
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.metadata-value {
+  color: var(--text-primary);
+}
+
+.metadata-nested {
+  margin-left: 12px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metadata-nested-item {
+  font-size: 14px;
+}
+
+.metadata-nested-key {
+  color: var(--text-muted);
+}
+
+.no-metadata {
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+.point-index {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.point-index:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+.placeholder-text {
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+/* Controls */
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.control-card {
+  background-color: var(--bg-tertiary);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.control-label {
+  color: var(--text-primary);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.control-slider {
+  width: 100%;
+}
+
+/* Draggable Divider */
+.divider {
+  width: 8px;
+  min-width: 8px;
+  cursor: col-resize;
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+}
+
+.divider-normal {
+  background-color: var(--border-color);
+}
+
+.divider-dragging {
+  background-color: var(--accent-primary);
+}
+
+.divider-hover {
+  background-color: var(--accent-secondary);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  pointer-events: none;
+  border: 1px solid var(--border-color);
+  max-width: 384px;
+  z-index: 50;
+}
+
+.tooltip-title {
+  font-weight: bold;
+  color: var(--accent-primary);
+  margin-bottom: 8px;
+}
+
+.tooltip-metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.tooltip-item {
+  font-size: 12px;
+}
+
+.tooltip-key {
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.tooltip-nested {
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.tooltip-nested-item {
+  font-size: 12px;
+}
+
+.tooltip-nested-key {
+  color: var(--text-muted);
+}
+
+.tooltip-footer {
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+/* Canvas */
+.canvas-container {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+/* Canvas Overlay Controls */
+.canvas-overlay-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.reset-camera-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.reset-camera-btn:hover {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.zoom-control {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.zoom-label {
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.zoom-slider {
+  width: 120px;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border-color);
+  border-radius: 3px;
+  outline: none;
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.zoom-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.zoom-value {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Celebrity Card */
+.celebrity-card {
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 2px solid var(--accent-primary);
+}
+
+.celebrity-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.celebrity-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent-primary);
+  margin: 0;
+}
+
+.celebrity-card-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.celebrity-card-close:hover {
+  color: var(--accent-secondary);
+}
+
+.celebrity-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.celebrity-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.celebrity-info-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.celebrity-info-value {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
 }
