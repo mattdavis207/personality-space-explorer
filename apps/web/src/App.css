@@ -5,6 +5,7 @@
   background-color: var(--bg-primary);
   display: flex;
   overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 /* Sidebar */
@@ -21,6 +22,31 @@
   height: 100%;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Sidebar scrollbar styles */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* Firefox scrollbar */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) var(--bg-primary);
 }
 
 .title-container {
@@ -361,6 +387,11 @@
   pointer-events: auto;
 }
 
+.external-data-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .reset-camera-btn {
   background-color: var(--bg-tertiary);
   color: var(--text-primary);
@@ -430,6 +461,33 @@
   color: var(--text-secondary);
   font-size: 12px;
   font-weight: 500;
+}
+
+/* Icon Buttons */
+.icon-button {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.icon-button:hover {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.icon-button:active {
+  transform: scale(0.98);
 }
 
 /* Celebrity Card */
@@ -597,7 +655,7 @@
 }
 
 .modal-close:hover {
-  background: var(--bg-tertiary);
+  
   color: var(--accent-secondary);
   transform: rotate(90deg);
 }

@@ -2,10 +2,92 @@ import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls, Stats, Html } from '@react-three/drei'
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { useParquetData, useJsonData} from '../components/ReadParquet.jsx'
-import { BsFillInfoCircleFill } from "react-icons/bs";
+import { BsFillInfoCircleFill, BsCamera, BsDownload } from "react-icons/bs";
 import CelebrityCard from '../components/CelebrityCard.jsx'
 import * as THREE from 'three'
 import './App.css'
+
+// Theme definitions
+const themes = {
+  dark: {
+    name: 'Dark Blue',
+    bgPrimary: '#111827',
+    bgSecondary: '#1f2937',
+    bgTertiary: '#374151',
+    textPrimary: '#ffffff',
+    textSecondary: '#d1d5db',
+    textTertiary: '#9ca3af',
+    textMuted: '#6b7280',
+    accentPrimary: '#3b82f6',
+    accentSecondary: '#60a5fa',
+    borderColor: '#4b5563'
+  },
+  purple: {
+    name: 'Purple Dream',
+    bgPrimary: '#1a0b2e',
+    bgSecondary: '#2d1b4e',
+    bgTertiary: '#3f2d5c',
+    textPrimary: '#ffffff',
+    textSecondary: '#d8b4fe',
+    textTertiary: '#c084fc',
+    textMuted: '#a78bfa',
+    accentPrimary: '#a855f7',
+    accentSecondary: '#c084fc',
+    borderColor: '#7c3aed'
+  },
+  neon: {
+    name: 'Neon Nights',
+    bgPrimary: '#0a0e27',
+    bgSecondary: '#14193b',
+    bgTertiary: '#1e2749',
+    textPrimary: '#ffffff',
+    textSecondary: '#a5f3fc',
+    textTertiary: '#67e8f9',
+    textMuted: '#22d3ee',
+    accentPrimary: '#06b6d4',
+    accentSecondary: '#22d3ee',
+    borderColor: '#0891b2'
+  },
+  forest: {
+    name: 'Forest Green',
+    bgPrimary: '#052e16',
+    bgSecondary: '#14532d',
+    bgTertiary: '#166534',
+    textPrimary: '#ffffff',
+    textSecondary: '#bbf7d0',
+    textTertiary: '#86efac',
+    textMuted: '#4ade80',
+    accentPrimary: '#22c55e',
+    accentSecondary: '#4ade80',
+    borderColor: '#16a34a'
+  },
+  sunset: {
+    name: 'Sunset Orange',
+    bgPrimary: '#431407',
+    bgSecondary: '#7c2d12',
+    bgTertiary: '#9a3412',
+    textPrimary: '#ffffff',
+    textSecondary: '#fed7aa',
+    textTertiary: '#fdba74',
+    textMuted: '#fb923c',
+    accentPrimary: '#f97316',
+    accentSecondary: '#fb923c',
+    borderColor: '#ea580c'
+  },
+  midnight: {
+    name: 'Midnight Blue',
+    bgPrimary: '#0c0a1d',
+    bgSecondary: '#1e1b3a',
+    bgTertiary: '#2d2a4a',
+    textPrimary: '#ffffff',
+    textSecondary: '#bfdbfe',
+    textTertiary: '#93c5fd',
+    textMuted: '#60a5fa',
+    accentPrimary: '#3b82f6',
+    accentSecondary: '#60a5fa',
+    borderColor: '#2563eb'
+  }
+}
 
 // Generate distinct colors for each cluster
 function getClusterColor(clusterLabel) {
@@ -42,6 +124,30 @@ async function fetchCelebrityImage(name) {
     console.error('Error fetching image:', error)
     return null
   }
+}
+
+// Screenshot helper component that has access to the Three.js gl context
+function ScreenshotHelper({ onScreenshotRef }) {
+  const { gl, scene, camera } = useThree()
+
+  useEffect(() => {
+    onScreenshotRef.current = () => {
+      // Force a render
+      gl.render(scene, camera)
+
+      // Get the data URL from the WebGL canvas
+      const dataURL = gl.domElement.toDataURL('image/png')
+
+      // Download it
+      const link = document.createElement('a')
+      link.download = `celebpsyche-screenshot-${Date.now()}.png`
+      link.href = dataURL
+      link.click()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gl, scene, camera])
+
+  return null
 }
 
 function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onPointHover, onPointClick, selectedCluster, selectedPoint, onCelebritySelect, pointSize, visiblePoints }) {
@@ -204,6 +310,19 @@ function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onP
         <pointsMaterial size={pointSize} vertexColors sizeAttenuation={true} />
       </points>
 
+      {/* highlighted point as a glowing sphere */}
+      {selectedPoint !== null && data[selectedPoint] && (
+        <mesh position={[data[selectedPoint][0], data[selectedPoint][1], data[selectedPoint][2]]}>
+          <sphereGeometry args={[0.02, 16, 16]} />
+          <meshBasicMaterial color="#00ffff" transparent opacity={0.9} />
+          {/* Outer glow ring */}
+          <mesh>
+            <sphereGeometry args={[0.04, 16, 16]} />
+            <meshBasicMaterial color="#00ffff" transparent opacity={0.2} wireframe />
+          </mesh>
+        </mesh>
+      )}
+
       {/* Floating label for selected point */}
       {selectedPoint !== null && data[selectedPoint] && celebrityMetadata && celebrityMetadata[selectedPoint] && (
         <Html position={[data[selectedPoint][0], data[selectedPoint][1], data[selectedPoint][2]]} distanceFactor={10}>
@@ -250,6 +369,7 @@ function App() {
   const [searchResult, setSearchResult] = useState(null)
   const controlsRef = useRef(null)
   const sidebarRef = useRef(null)
+  const screenshotRef = useRef(null)
 
   // handles senection of celebrity and point
   const handleCelebritySelect = async (pointIndex, celebrity) => {
@@ -469,16 +589,31 @@ function App() {
     }
   }, [zoomLevel])
 
+  // Apply theme to CSS variables
+  useEffect(() => {
+    const currentTheme = themes[theme] || themes.dark
+    const root = document.documentElement
+
+    root.style.setProperty('--bg-primary', currentTheme.bgPrimary)
+    root.style.setProperty('--bg-secondary', currentTheme.bgSecondary)
+    root.style.setProperty('--bg-tertiary', currentTheme.bgTertiary)
+    root.style.setProperty('--text-primary', currentTheme.textPrimary)
+    root.style.setProperty('--text-secondary', currentTheme.textSecondary)
+    root.style.setProperty('--text-tertiary', currentTheme.textTertiary)
+    root.style.setProperty('--text-muted', currentTheme.textMuted)
+    root.style.setProperty('--accent-primary', currentTheme.accentPrimary)
+    root.style.setProperty('--accent-secondary', currentTheme.accentSecondary)
+    root.style.setProperty('--border-color', currentTheme.borderColor)
+  }, [theme])
+
   return (
     <div className="app-container">
 
       {/* Left Sidebar */}
       <div ref={sidebarRef} className="sidebar" style={{ width: `${sidebarWidth}%` }}>
         <div className="title-container">
-          <h1 className="sidebar-title">CelebPsyche</h1>
-          <button className="info-button" onClick={() => setShowInfoModal(true)} title="About this project">
-            <BsFillInfoCircleFill size={30} color="#3b82f6" style={{ flexShrink: 0 }}/>
-          </button>
+          <img src="/app_icon.svg" alt="App Logo" style={{ width: '96px', height: '96px', flexShrink: 0 }} />
+          <h1 className="sidebar-title">Personality Space Explorer</h1>
         </div>
 
         {/* Search Box */}
@@ -598,10 +733,9 @@ function App() {
               onChange={(e) => setTheme(e.target.value)}
               className="filter-select"
             >
-              <option value="dark">Dark</option>
-              <option value="light">Light</option>
-              <option value="cyberpunk">Cyberpunk</option>
-              <option value="forest">Forest</option>
+              {Object.entries(themes).map(([key, themeObj]) => (
+                <option key={key} value={key}>{themeObj.name}</option>
+              ))}
             </select>
           </div>
           
@@ -620,9 +754,9 @@ function App() {
               className="control-slider"
             />
           </div>
-          
+
           {/* Point size scrollbar  */}
-          <div className="control-card" style = {{'margin-bottom': 32}}>
+          <div className="control-card" style={{'marginBottom': 32}}>
             <label className="control-label">
               Point Size: {(pointSize * 100).toFixed(0)}
             </label>
@@ -722,7 +856,9 @@ function App() {
               <section className="modal-section">
                 <h3>Dataset</h3>
                 <p>
-                  The data comes from <strong>Personality Database</strong>, containing personality typings for
+                  The data comes from <a href="https://www.kaggle.com/">kaggle.com</a> from this dataset: <a href="https://www.kaggle.com/datasets/yuraslastya/celeb-mbti/data">MBTI. 
+                  Celebrity Personality Types</a> and special thanks to Yura Slastya for posting it. The data originally comes from 
+                  <a href= "https://www.personality-database.com"> Personality Database</a>, containing personality typings for
                   celebrities, fictional characters, and public figures across multiple frameworks:
                 </p>
                 <ul>
@@ -737,7 +873,7 @@ function App() {
                 <h3>Techniques Used</h3>
                 <ul>
                   <li><strong>Feature Engineering:</strong> One-hot encoding for categorical traits, continuous axis encoding for MBTI percentages</li>
-                  <li><strong>Dimensionality Reduction:</strong> UMAP (Uniform Manifold Approximation and Projection) to reduce high-dimensional personality features to 3D space</li>
+                  <li><strong>Dimensionality Reduction:</strong> PCA (Principal Component Analysis) while preserving 90% variance into UMAP (Uniform Manifold Approximation and Projection) to reduce high-dimensional personality features to 3D space</li>
                   <li><strong>Clustering:</strong> HDBSCAN (Hierarchical Density-Based Spatial Clustering) to identify natural personality groupings</li>
                   <li><strong>Visualization:</strong> React Three Fiber for interactive 3D rendering with 50K+ points</li>
                 </ul>
@@ -767,11 +903,12 @@ function App() {
 
               <section className="modal-section">
                 <h3>Helpful Links</h3>
+                <p style={{}}>for learning about personality metrics :)</p>
                 <ul>
-                  <li><strong>MBTI Types</strong> <a href="https://www.16personalities.com/personality-types">https://www.16personalities.com/personality-types</a></li>
-                  <li><strong> Enneagram Types</strong> <a href="https://www.enneagraminstitute.com/type-descriptions/">https://www.enneagraminstitute.com/type-descriptions/</a></li>
-                  <li><strong> Socionics Types</strong> <a href="https://www.sociotype.com/socionics/types">https://www.sociotype.com/socionics/types</a></li>
-                  <li><strong> Big 5 SLOAN</strong> <a href="https://similarminds.com/global5/sloan.html">https://similarminds.com/global5/sloan.html</a></li>
+                  <li><strong>MBTI Types:</strong> <a href="https://www.16personalities.com/personality-types">https://www.16personalities.com/personality-types</a></li>
+                  <li><strong> Enneagram Types:</strong> <a href="https://www.enneagraminstitute.com/type-descriptions/">https://www.enneagraminstitute.com/type-descriptions/</a></li>
+                  <li><strong> Socionics Types:</strong> <a href="https://www.sociotype.com/socionics/types">https://www.sociotype.com/socionics/types</a></li>
+                  <li><strong> Big 5 SLOAN:</strong> <a href="https://similarminds.com/global5/sloan.html">https://similarminds.com/global5/sloan.html</a></li>
                 </ul>
               </section>
             </div>
@@ -781,7 +918,35 @@ function App() {
 
       {/* Right Canvas Area */}
       <div className="canvas-container">
-        <Canvas camera={{ position: [30, 25, 30], fov: 80}}>
+        {/* Info Button - Top Left */}
+        <button
+          onClick={() => setShowInfoModal(true)}
+          title="About this project"
+          style={{
+            position: 'absolute',
+            top: '20px',
+            left: '20px',
+            zIndex: 1000,
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
+            color: 'var(--accent-primary)',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'scale(1.2) rotate(180deg)'
+            e.target.style.filter = 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.8))'
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'scale(1) rotate(0deg)'
+            e.target.style.filter = 'none'
+          }}
+        >
+          <BsFillInfoCircleFill size={32} />
+        </button>
+
+        <Canvas camera={{ position: [30, 25, 30], fov: 80}} gl={{ preserveDrawingBuffer: true }}>
           <ambientLight intensity={0.5} />
           <directionalLight color="white" position={[10, 10, 10]} intensity={1} />
           <PointCloud
@@ -812,6 +977,7 @@ function App() {
             maxZoom={200}
             minZoom={100}
           />
+          <ScreenshotHelper onScreenshotRef={screenshotRef} />
           <axesHelper args={[30]} />
           {/* <Stats /> */}
         </Canvas>
@@ -834,6 +1000,73 @@ function App() {
               orient="vertical"
             />
             <span className="zoom-value">{zoomLevel}</span>
+          </div>
+
+          <div className = "external-data-container">
+            {/* Export Icon Buttons */}
+            <button
+              className="icon-button"
+              onClick={() => {
+                if (screenshotRef.current) {
+                  screenshotRef.current()
+                }
+              }}
+              title="Save Screenshot"
+            >
+              <BsCamera size={20} />
+            </button>
+            
+            <button
+              className="icon-button"
+              onClick={() => {
+                
+                // build export data using selected celebrity metadata and current cluster selection
+                const exportData = {
+                  timestamp: new Date().toISOString(),
+                  selectedCelebrity: selectedCelebrity ? {
+                    name: selectedCelebrity[1] || selectedCelebrity.name || 'Unknown',
+                    category: selectedCelebrity[2] || selectedCelebrity.category,
+                    subcategory: selectedCelebrity[3] || selectedCelebrity.subcategory,
+                    mbti: selectedCelebrity[4] || selectedCelebrity.four_letter,
+                    enneagram: selectedCelebrity[5] || selectedCelebrity.enneagram,
+                    socionics: selectedCelebrity[6] || selectedCelebrity.socionics,
+                    big5: selectedCelebrity[7] || selectedCelebrity.big_5_SLOAN,
+                    pointIndex: selectedPoint
+                  } : null,
+                  selectedCluster: selectedCluster,
+                  clusterInfo: selectedCluster !== null && clusterMetadata?.[selectedCluster] ? clusterMetadata[selectedCluster] : null,
+                  filters: {
+                    mbti: mbtiFilter,
+                    enneagram: enneagramFilter
+                  },
+                  viewSettings: {
+                    zoomLevel,
+                    pointSize: (pointSize * 100).toFixed(0)
+                  },
+                  stats: {
+                    totalPoints: data?.length || 0,
+                    visiblePoints: visiblePoints ? visiblePoints.size : data?.length || 0
+                  }
+                };
+
+                // Handle BigInt serialization
+                const jsonString = JSON.stringify(exportData, (key, value) =>
+                  typeof value === 'bigint' ? value.toString() : value
+                , 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                const link = document.createElement('a');
+                const filename = selectedCelebrity
+                  ? `celebpsyche-${(selectedCelebrity[1] || selectedCelebrity.name || 'data').replace(/\s+/g, '-')}-${Date.now()}.json`
+                  : `celebpsyche-export-${Date.now()}.json`;
+                link.download = filename;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+              }}
+              title="Export Current Selection"
+            >
+              <BsDownload size={20} />
+            </button>
+
           </div>
         </div>
       </div>
