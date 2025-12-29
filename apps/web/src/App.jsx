@@ -1,7 +1,8 @@
 import { Canvas, useThree } from '@react-three/fiber'
-import { OrbitControls, Stats } from '@react-three/drei'
-import { useEffect, useRef, useState } from 'react'
+import { OrbitControls, Stats, Html } from '@react-three/drei'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { useParquetData, useJsonData} from '../components/ReadParquet.jsx'
+import { BsFillInfoCircleFill } from "react-icons/bs";
 import CelebrityCard from '../components/CelebrityCard.jsx'
 import * as THREE from 'three'
 import './App.css'
@@ -28,7 +29,22 @@ function getClusterColor(clusterLabel) {
   return [r + m, g + m, b + m]
 }
 
-function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onPointHover, onPointClick, selectedCluster, selectedPoint, onCelebritySelect }) {
+// Fetch celebrity image from an API (example using Wikipedia or custom API)
+async function fetchCelebrityImage(name) {
+  try {
+    // Example: Using Wikipedia API to get thumbnail
+    const response = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name)}`
+    )
+    const data = await response.json()
+    return data.thumbnail?.source || null
+  } catch (error) {
+    console.error('Error fetching image:', error)
+    return null
+  }
+}
+
+function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onPointHover, onPointClick, selectedCluster, selectedPoint, onCelebritySelect, pointSize, visiblePoints }) {
   const pointsRef = useRef()
   const pointerDownRef = useRef({ x: 0, y: 0 })
   const { camera, raycaster, pointer, gl } = useThree()
@@ -41,7 +57,6 @@ function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onP
     // create arrays for positions and colors
     const positions = new Float32Array(data.length * 3)
     const colors = new Float32Array(data.length * 3)
-    const sizes = new Float32Array(data.length)
 
     data.forEach((point, i) => {
       // set position
@@ -49,17 +64,20 @@ function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onP
       positions[i * 3 + 1] = point[1]
       positions[i * 3 + 2] = point[2]
 
-      // set size, larger for selected point
-      sizes[i] = selectedPoint === i ? 3.0 : 1.0
+      // Check if point is visible based on filters
+      const isVisible = visiblePoints === null || visiblePoints.has(i)
 
       // set color based on cluster and selection
       let color
-      if (clusterData && clusterData[i]) {
+      if (!isVisible) {
+        // Make filtered points invisible (set alpha to 0 by making them black)
+        color = [0.0, 0.0, 0.0]
+      } else if (clusterData && clusterData[i]) {
         const clusterLabel = clusterData[i][0]
 
         if (selectedPoint === i) {
-          // Highlight selected point in white
-          color = [1.0, 1.0, 1.0]
+          // Highlight selected point in bright cyan/electric blue
+          color = [0.0, 1.0, 1.0]
         } else if (selectedCluster !== null && clusterLabel !== selectedCluster) {
           // this dims non-selected clusters
           color = [0.2, 0.2, 0.2]
@@ -81,8 +99,11 @@ function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onP
     // set attributes on the geometry
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1))
-  }, [data, clusterData, selectedCluster, selectedPoint])
+
+    // Mark attributes as needing update
+    geometry.attributes.position.needsUpdate = true
+    geometry.attributes.color.needsUpdate = true
+  }, [data, clusterData, selectedCluster, selectedPoint, visiblePoints])
 
   useEffect(() => {
     const handlePointerMove = (event) => {
@@ -177,10 +198,33 @@ function PointCloud({ data, clusterData, clusterMetadata, celebrityMetadata, onP
   if (!data || data.length === 0) return null
 
   return (
-    <points ref={pointsRef}>
-      <bufferGeometry />
-      <pointsMaterial size={0.02} vertexColors sizeAttenuation={true} />
-    </points>
+    <>
+      <points ref={pointsRef}>
+        <bufferGeometry />
+        <pointsMaterial size={pointSize} vertexColors sizeAttenuation={true} />
+      </points>
+
+      {/* Floating label for selected point */}
+      {selectedPoint !== null && data[selectedPoint] && celebrityMetadata && celebrityMetadata[selectedPoint] && (
+        <Html position={[data[selectedPoint][0], data[selectedPoint][1], data[selectedPoint][2]]} distanceFactor={10}>
+          <div style={{
+            background: 'rgba(31, 41, 55, 0.95)',
+            color: '#60a5fa',
+            padding: '8px 12px',
+            borderRadius: '6px',
+            border: '2px solid #3b82f6',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+            transform: 'translate(-50%, -120%)'
+          }}>
+            {celebrityMetadata[selectedPoint][1] || celebrityMetadata[selectedPoint].name || 'Unknown'}
+          </div>
+        </Html>
+      )}
+    </>
   )
 }
 
@@ -191,24 +235,196 @@ function App() {
   const { data: celebrityMetadata } = useParquetData("/artifacts/metadata.parquet", true)
   const [zoomSpeed, setZoomSpeed] = useState(1)
   const [zoomLevel, setZoomLevel] = useState(50)
+  const [pointSize, setPointSize] = useState(0.02)
   const [sidebarWidth, setSidebarWidth] = useState(20) // percentage
   const [isDragging, setIsDragging] = useState(false)
   const [hoveredPoint, setHoveredPoint] = useState(null)
   const [selectedCluster, setSelectedCluster] = useState(null)
   const [selectedPoint, setSelectedPoint] = useState(null)
   const [selectedCelebrity, setSelectedCelebrity] = useState(null)
+  const [mbtiFilter, setMbtiFilter] = useState('all')
+  const [enneagramFilter, setEnneagramFilter] = useState('all')
+  const [theme, setTheme] = useState('dark')
+  const [showInfoModal, setShowInfoModal] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResult, setSearchResult] = useState(null)
   const controlsRef = useRef(null)
+  const sidebarRef = useRef(null)
 
-  const handleCelebritySelect = (pointIndex, celebrity) => {
+  // handles senection of celebrity and point
+  const handleCelebritySelect = async (pointIndex, celebrity) => {
     setSelectedPoint(pointIndex)
+
+    // Fetch image URL if needed
+    if (celebrity) {
+      const name = celebrity[1] || celebrity.name
+
+      // fetch celebrity image from api
+      if (name) {
+        const imageUrl = await fetchCelebrityImage(name)
+        celebrity.image_url = imageUrl
+      }
+    }
+
     setSelectedCelebrity(celebrity)
+
+    // Scroll sidebar to top when a celebrity is selected
+    if (celebrity && sidebarRef.current) {
+      sidebarRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
+  const handleSearch = (query) => {
+    setSearchQuery(query)
+
+    if (!query.trim() || !celebrityMetadata) {
+      setSearchResult(null)
+      return
+    }
+
+    const searchLower = query.toLowerCase().trim()
+    const foundIndex = celebrityMetadata.findIndex(celeb => {
+      const name = celeb[1] || celeb.name || ''
+      return name.toLowerCase().includes(searchLower)
+    })
+
+    if (foundIndex !== -1) {
+      const celebrity = celebrityMetadata[foundIndex]
+      const name = celebrity[1] || celebrity.name || 'Unknown'
+      setSearchResult({ found: true, index: foundIndex, name })
+      handleCelebritySelect(foundIndex, celebrity)
+
+      // Also select the cluster if available
+      if (clusterData && clusterData[foundIndex]) {
+        setSelectedCluster(clusterData[foundIndex][0])
+      }
+    } else {
+      setSearchResult({ found: false })
+      setSelectedPoint(null)
+      setSelectedCelebrity(null)
+    }
   }
 
   const handleResetCamera = () => {
-    if (controlsRef.current) {
-      controlsRef.current.reset()
+    if (controlsRef.current && controlsRef.current.object) {
+      const camera = controlsRef.current.object
+      const controls = controlsRef.current
+
+      // Reset camera position to initial values
+      camera.position.set(30, 25, 30)
+
+      // Reset target to initial value
+      controls.target.set(0, 6, 0)
+
+      // Reset zoom level
+      setZoomLevel(50)
+
+      // Update controls
+      controls.update()
     }
   }
+
+  // Apply theme to CSS variables
+  useEffect(() => {
+    const root = document.documentElement
+
+    if (theme === 'light') {
+      root.style.setProperty('--bg-primary', '#f9fafb')
+      root.style.setProperty('--bg-secondary', '#ffffff')
+      root.style.setProperty('--bg-tertiary', '#f3f4f6')
+      root.style.setProperty('--text-primary', '#111827')
+      root.style.setProperty('--text-secondary', '#374151')
+      root.style.setProperty('--text-tertiary', '#6b7280')
+      root.style.setProperty('--text-muted', '#9ca3af')
+      root.style.setProperty('--border-color', '#d1d5db')
+    } else if (theme === 'cyberpunk') {
+      root.style.setProperty('--bg-primary', '#0a0e27')
+      root.style.setProperty('--bg-secondary', '#16213e')
+      root.style.setProperty('--bg-tertiary', '#1a1a2e')
+      root.style.setProperty('--text-primary', '#00fff5')
+      root.style.setProperty('--text-secondary', '#ff00ff')
+      root.style.setProperty('--text-tertiary', '#ffff00')
+      root.style.setProperty('--text-muted', '#7b68ee')
+      root.style.setProperty('--accent-primary', '#ff00ff')
+      root.style.setProperty('--accent-secondary', '#00fff5')
+      root.style.setProperty('--border-color', '#7b68ee')
+    } else if (theme === 'forest') {
+      root.style.setProperty('--bg-primary', '#1a2f1a')
+      root.style.setProperty('--bg-secondary', '#243b24')
+      root.style.setProperty('--bg-tertiary', '#2d4a2d')
+      root.style.setProperty('--text-primary', '#e8f5e8')
+      root.style.setProperty('--text-secondary', '#c8e6c8')
+      root.style.setProperty('--text-tertiary', '#a8d8a8')
+      root.style.setProperty('--text-muted', '#88c088')
+      root.style.setProperty('--accent-primary', '#4ade80')
+      root.style.setProperty('--accent-secondary', '#86efac')
+      root.style.setProperty('--border-color', '#4a7c4a')
+    } else {
+      // dark theme (default)
+      root.style.setProperty('--bg-primary', '#111827')
+      root.style.setProperty('--bg-secondary', '#1f2937')
+      root.style.setProperty('--bg-tertiary', '#374151')
+      root.style.setProperty('--text-primary', '#ffffff')
+      root.style.setProperty('--text-secondary', '#d1d5db')
+      root.style.setProperty('--text-tertiary', '#9ca3af')
+      root.style.setProperty('--text-muted', '#6b7280')
+      root.style.setProperty('--accent-primary', '#3b82f6')
+      root.style.setProperty('--accent-secondary', '#60a5fa')
+      root.style.setProperty('--border-color', '#4b5563')
+    }
+  }, [theme])
+
+  // Extract unique MBTI and Enneagram types from metadata
+  const { uniqueMbti, uniqueEnneagram } = useMemo(() => {
+    if (!celebrityMetadata || celebrityMetadata.length === 0) {
+      return { uniqueMbti: [], uniqueEnneagram: [] }
+    }
+
+    const mbtiSet = new Set()
+    const enneagramSet = new Set()
+
+    celebrityMetadata.forEach(celeb => {
+      const mbti = celeb[4] || celeb.four_letter
+      const enneagram = celeb[5] || celeb.enneagram
+
+      if (mbti && mbti !== 'Unknown') mbtiSet.add(mbti)
+      if (enneagram && enneagram !== 'Unknown') {
+        // extract main number from enneagram 
+        const mainType = String(enneagram).match(/\d/)?.[0]
+        if (mainType) enneagramSet.add(mainType)
+      }
+    })
+
+    return {
+      uniqueMbti: Array.from(mbtiSet).sort(),
+      uniqueEnneagram: Array.from(enneagramSet).sort((a, b) => a - b)
+    }
+  }, [celebrityMetadata])
+
+  // compute which points should be visible based on filters
+  const visiblePoints = useMemo(() => {
+    if (!celebrityMetadata || (mbtiFilter === 'all' && enneagramFilter === 'all')) {
+      return null // null means show all points
+    }
+
+    const visible = new Set()
+
+    celebrityMetadata.forEach((celeb, index) => {
+      const mbti = celeb[4] || celeb.four_letter
+      const enneagram = celeb[5] || celeb.enneagram
+      const mainEnneagram = String(enneagram).match(/\d/)?.[0]
+
+      const mbtiMatch = mbtiFilter === 'all' || mbti === mbtiFilter
+      const enneagramMatch = enneagramFilter === 'all' || mainEnneagram === enneagramFilter
+
+      if (mbtiMatch && enneagramMatch) {
+        visible.add(index)
+      }
+    })
+
+    // set of visible features to display
+    return visible
+  }, [celebrityMetadata, mbtiFilter, enneagramFilter])
 
   const handleMouseDown = () => {
     setIsDragging(true)
@@ -218,7 +434,7 @@ function App() {
     const handleMouseMove = (e) => {
       if (!isDragging) return
       const newWidth = (e.clientX / window.innerWidth) * 100
-      if (newWidth >= 15 && newWidth <= 60) {
+      if (newWidth >= 10 && newWidth <= 80) {
         setSidebarWidth(newWidth)
       }
     }
@@ -257,8 +473,31 @@ function App() {
     <div className="app-container">
 
       {/* Left Sidebar */}
-      <div className="sidebar" style={{ width: `${sidebarWidth}%` }}>
-        <h1 className="sidebar-title">Personality Galaxy</h1>
+      <div ref={sidebarRef} className="sidebar" style={{ width: `${sidebarWidth}%` }}>
+        <div className="title-container">
+          <h1 className="sidebar-title">CelebPsyche</h1>
+          <button className="info-button" onClick={() => setShowInfoModal(true)} title="About this project">
+            <BsFillInfoCircleFill size={30} color="#3b82f6" style={{ flexShrink: 0 }}/>
+          </button>
+        </div>
+
+        {/* Search Box */}
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search by name..."
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+          {searchResult && (
+            <div className={`search-result ${searchResult.found ? 'search-result-found' : 'search-result-not-found'}`}>
+              <span className="search-result-icon">{searchResult.found ? '✓' : '✗'}</span>
+              <span>{searchResult.found ? `Found: ${searchResult.name}` : 'No celebrity found with that name'}</span>
+            </div>
+          )}
+        </div>
+
 
         {/* Selected Celebrity Card */}
         {selectedCelebrity && (
@@ -280,8 +519,9 @@ function App() {
 
                   return (
                     <div key={key} className="metadata-item">
-                      <span className="metadata-key">{key}: </span>
 
+                      {key== "label" ? (<span></span>): (<span className="metadata-key">{key}: </span>)}
+                    
                       {isObject ? (
                         <div className="metadata-nested">
                           {Object.entries(value).map(([subKey, subValue]) => (
@@ -292,7 +532,8 @@ function App() {
                           ))}
                         </div>
                       ) : (
-                        <span className="metadata-value">{String(value)}</span>
+                        key === "label" ? (<span className="metadata-label">{String(value)}</span>) :
+                              (<span className="metadata-value">{String(value)}</span>)
                       )}
                     </div>
                   )
@@ -312,19 +553,86 @@ function App() {
           </div>
         )}
 
+        {/* Filters */}
+        
+        {/* MBTI Type Dropdown Filter  */}
+        <div className="controls-container">
+          <div className="control-card">
+            <label className="control-label">Filter by MBTI Type</label>
+            <select
+              value={mbtiFilter}
+              onChange={(e) => setMbtiFilter(e.target.value)}
+              className="filter-select"
+            >
+              <option value="all">All Types</option>
+              {uniqueMbti.map(type => (
+                <option key={type} value={type}>{type}</option>
+              ))}
+            </select>
+          </div>
+          
+          {/* Enneagram Dropdown Filter  */}
+          <div className="control-card">
+            <label className="control-label">Filter by Enneagram</label>
+            <select
+              value={enneagramFilter}
+              onChange={(e) => setEnneagramFilter(e.target.value)}
+              className="filter-select"
+            >
+              <option value="all">All Types</option>
+              {uniqueEnneagram.map(type => (
+                <option key={type} value={type}>Type {type}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
         {/* Controls */}
         <div className="controls-container">
+
+          {/* Color Theme Dropdown  */}
+          <div className="control-card">
+            <label className="control-label">Color Theme</label>
+            <select
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+              className="filter-select"
+            >
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+              <option value="cyberpunk">Cyberpunk</option>
+              <option value="forest">Forest</option>
+            </select>
+          </div>
+          
+          {/* Zoom Speed scrollbar  */}
           <div className="control-card">
             <label className="control-label">
               Zoom Speed: {zoomSpeed.toFixed(1)}
             </label>
             <input
               type="range"
-              min="0.1"
+              min="0.05"
               max="5"
-              step="0.1"
+              step="0.05"
               value={zoomSpeed}
               onChange={(e) => setZoomSpeed(Number(e.target.value))}
+              className="control-slider"
+            />
+          </div>
+          
+          {/* Point size scrollbar  */}
+          <div className="control-card" style = {{'margin-bottom': 32}}>
+            <label className="control-label">
+              Point Size: {(pointSize * 100).toFixed(0)}
+            </label>
+            <input
+              type="range"
+              min="0.005"
+              max="0.1"
+              step="0.005"
+              value={pointSize}
+              onChange={(e) => setPointSize(Number(e.target.value))}
               className="control-slider"
             />
           </div>
@@ -394,9 +702,86 @@ function App() {
         </div>
       )}
 
+      {/* Info Modal */}
+      {showInfoModal && (
+        <div className="modal-overlay" onClick={() => setShowInfoModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowInfoModal(false)}>×</button>
+
+            <h2 className="modal-title">About Personality Space Explorer</h2>
+
+            <div className="modal-body">
+              <section className="modal-section">
+                <h3>What is this?</h3>
+                <p>
+                  An interactive 3D visualization of 50,000+ celebrities mapped in personality space based on their
+                  MBTI types, Enneagram types, and other personality frameworks.
+                </p>
+              </section>
+
+              <section className="modal-section">
+                <h3>Dataset</h3>
+                <p>
+                  The data comes from <strong>Personality Database</strong>, containing personality typings for
+                  celebrities, fictional characters, and public figures across multiple frameworks:
+                </p>
+                <ul>
+                  <li><strong>MBTI</strong> (Myers-Briggs Type Indicator)</li>
+                  <li><strong>Enneagram</strong> (9 personality types)</li>
+                  <li><strong>Socionics</strong> (information metabolism theory)</li>
+                  <li><strong>Big 5 SLOAN</strong> (trait-based model)</li>
+                </ul>
+              </section>
+
+              <section className="modal-section">
+                <h3>Techniques Used</h3>
+                <ul>
+                  <li><strong>Feature Engineering:</strong> One-hot encoding for categorical traits, continuous axis encoding for MBTI percentages</li>
+                  <li><strong>Dimensionality Reduction:</strong> UMAP (Uniform Manifold Approximation and Projection) to reduce high-dimensional personality features to 3D space</li>
+                  <li><strong>Clustering:</strong> HDBSCAN (Hierarchical Density-Based Spatial Clustering) to identify natural personality groupings</li>
+                  <li><strong>Visualization:</strong> React Three Fiber for interactive 3D rendering with 50K+ points</li>
+                </ul>
+              </section>
+
+              <section className="modal-section">
+                <h3>How to Use</h3>
+                <ul>
+                  <li><strong>Rotate:</strong> Left-click and drag to rotate the view</li>
+                  <li><strong>Pan:</strong> Right-click and drag to pan around</li>
+                  <li><strong>Zoom:</strong> Scroll to zoom in/out</li>
+                  <li><strong>Hover:</strong> Hover over points to see individual celebrity info</li>
+                  <li><strong>Click:</strong> Click a point to select the cluster and see that celebrity's details</li>
+                  <li><strong>Filter:</strong> Use sidebar filters to explore specific personality types</li>
+                </ul>
+              </section>
+
+              <section className="modal-section">
+                <h3>Purpose</h3>
+                <p>
+                  This project demonstrates how machine learning can reveal hidden patterns in personality data.
+                  Points that are close together represent similar personality profiles, while clusters reveal
+                  natural groupings of personality types. Explore to discover how different personality frameworks
+                  relate to each other in this high-dimensional space!
+                </p>
+              </section>
+
+              <section className="modal-section">
+                <h3>Helpful Links</h3>
+                <ul>
+                  <li><strong>MBTI Types</strong> <a href="https://www.16personalities.com/personality-types">https://www.16personalities.com/personality-types</a></li>
+                  <li><strong> Enneagram Types</strong> <a href="https://www.enneagraminstitute.com/type-descriptions/">https://www.enneagraminstitute.com/type-descriptions/</a></li>
+                  <li><strong> Socionics Types</strong> <a href="https://www.sociotype.com/socionics/types">https://www.sociotype.com/socionics/types</a></li>
+                  <li><strong> Big 5 SLOAN</strong> <a href="https://similarminds.com/global5/sloan.html">https://similarminds.com/global5/sloan.html</a></li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Right Canvas Area */}
       <div className="canvas-container">
-        <Canvas camera={{ position: [30, 30, 30], fov: 80 }}>
+        <Canvas camera={{ position: [30, 25, 30], fov: 80}}>
           <ambientLight intensity={0.5} />
           <directionalLight color="white" position={[10, 10, 10]} intensity={1} />
           <PointCloud
@@ -409,9 +794,12 @@ function App() {
             selectedCluster={selectedCluster}
             selectedPoint={selectedPoint}
             onCelebritySelect={handleCelebritySelect}
+            pointSize={pointSize}
+            visiblePoints={visiblePoints}
           />
           <OrbitControls
             ref={controlsRef}
+            target={[0, 6, 0]}
             enableRotate
             enableDamping
             enablePan

@@ -11,6 +11,7 @@ function CelebrityCard({ celebrity, onClose }) {
   const enneagram = celebrity[5] || celebrity.enneagram;
   const socionics = celebrity[6] || celebrity.socionics;
   const big5 = celebrity[7] || celebrity.big_5_SLOAN;
+  const imageUrl = celebrity[8] || celebrity.image_url;
 
   return (
     <div className="celebrity-card">
@@ -18,6 +19,23 @@ function CelebrityCard({ celebrity, onClose }) {
         <h2 className="celebrity-card-title">{name}</h2>
         <button className="celebrity-card-close" onClick={onClose}>×</button>
       </div>
+
+      {/* Celebrity Image */}
+      {imageUrl && (
+        <div style={{ marginBottom: '16px' }}>
+          <img
+            src={imageUrl}
+            alt={name}
+            style={{
+              width: '100%',
+              borderRadius: '6px',
+              maxHeight: '200px',
+              objectFit: 'cover'
+            }}
+            onError={(e) => { e.target.style.display = 'none' }}
+          />
+        </div>
+      )}
 
       <div className="celebrity-card-content">
         {category && (
