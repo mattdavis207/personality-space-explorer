@@ -135,7 +135,7 @@ vercel
 
 ## Dataset
 
-The project uses the ["MBTI Celebrity Personality Types"](https://www.kaggle.com/datasets/yuraslastya/celeb-mbti/data) dataset from Kaggle, containing personality type information for over 50,000 celebrities including:
+The project uses the ["MBTI Celebrity Personality Types"](https://www.kaggle.com/datasets/yuraslastya/celeb-mbti/data) dataset (credit goes to Yura Slastya for posting it) from Kaggle, containing personality type information for over 50,000 celebrities including:
 - MBTI type (16 personality types)
 - Enneagram type (Types 1-9)
 - Celebrity name
